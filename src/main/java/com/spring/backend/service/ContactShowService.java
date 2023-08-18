@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.spring.backend.pojo.Show;
+import com.spring.backend.constants.Constants;
 import com.spring.backend.repository.ContactShowRepository;
 
 @Service
@@ -20,6 +21,15 @@ public class ContactShowService implements ShowServiceInterface{
     @Override
     public int getShowListSize() {
         return contactRepository.getShowListSize();
+    }
+
+    @Override
+    public int getShowIndexById(String id) {
+        for(int i=0; i<getShowListSize(); i++) {
+            if(getShowByIndex(i).getId().equals(id))
+                return i;
+        }
+        return Constants.NOT_FOUND;
     }
     
 

@@ -12,9 +12,9 @@ import com.spring.backend.pojo.Show;
 public class ContactShowRepository {
     
     private List<Show> shows = Arrays.asList(
-        new Show("Attack on titan", "Hero", (float)9.9),
-        new Show("Harry Potter", "Potions", (float)6.7),
-        new Show("Ergo Proxy", "The final Proxy", (float)10)
+        new Show("Attack on titan", "Hero", (float)9.9, "123"),
+        new Show("Harry Potter", "Potions", (float)6.7, "456"),
+        new Show("Ergo Proxy", "The final Proxy", (float)10, "789")
     );
 
     public List<Show> getShows() {
