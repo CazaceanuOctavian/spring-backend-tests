@@ -24,6 +24,10 @@ public class ContactShowRepository {
     public Show getShowByIndex(int index) {
         return shows.get(index);
     }
+
+    public int getShowListSize() {
+        return shows.size();
+    }
  
     
 }

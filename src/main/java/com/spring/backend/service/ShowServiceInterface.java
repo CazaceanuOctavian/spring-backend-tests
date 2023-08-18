@@ -4,4 +4,5 @@ import com.spring.backend.pojo.Show;
 
 public interface ShowServiceInterface {
     public Show getShowByIndex(int index);
+    public int getShowListSize();
 }

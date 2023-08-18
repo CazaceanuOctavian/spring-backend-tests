@@ -16,6 +16,11 @@ public class ContactShowService implements ShowServiceInterface{
     public Show getShowByIndex(int index) {
         return contactRepository.getShowByIndex(index);
     }
+
+    @Override
+    public int getShowListSize() {
+        return contactRepository.getShowListSize();
+    }
     
 
 }
