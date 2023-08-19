@@ -23,6 +23,11 @@ public class ContactShowService implements ShowServiceInterface{
         return contactRepository.getShowListSize();
     }
 
+     @Override
+    public void addShow(Show show) {
+        contactRepository.addShow(show);
+    }
+
     @Override
     public int getShowIndexById(String id) {
         for(int i=0; i<getShowListSize(); i++) {
@@ -31,6 +36,8 @@ public class ContactShowService implements ShowServiceInterface{
         }
         return Constants.NOT_FOUND;
     }
+
+   
     
 
 }

@@ -5,6 +5,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.spring.backend.constants.Constants;
@@ -34,6 +36,12 @@ public class ContactController {
 
         Show currentShow = contactService.getShowByIndex(currentShowIndex);
         return new ResponseEntity<Show>(currentShow, HttpStatus.OK);
+    }
+
+    @PostMapping("/show")
+    public ResponseEntity<Show> createShow(@RequestBody Show show) {
+        contactService.addShow(show);
+        return new ResponseEntity<Show>(show, HttpStatus.CREATED);
     }
     
 }

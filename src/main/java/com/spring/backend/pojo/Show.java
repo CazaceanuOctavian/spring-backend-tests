@@ -13,11 +13,10 @@ public class Show {
         this.id= UUID.randomUUID().toString();
     }
 
-    public Show(String title, String episode, Float rating, String id) {
+    public Show(String title, String episode, Float rating) {
         this.title = title;
         this.episode = episode;
         this.rating = rating;
-        this.id = id;
     }
 
 
