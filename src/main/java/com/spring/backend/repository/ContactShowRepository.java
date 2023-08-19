@@ -32,6 +32,10 @@ public class ContactShowRepository {
     public void updateShow(int index, Show show) {
         shows.set(index, show);
     }
+
+    public String getShowIdByIndex(int index) {
+        return shows.get(index).getId();
+    }
  
     
 }

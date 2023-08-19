@@ -22,7 +22,7 @@ public class ContactController {
 
     @GetMapping("/show/getByIndex/{index}")
     public ResponseEntity<Show> getShowUsingIndex(@PathVariable(required = true) int index) {
-        if(index > contactService.getShowListSize()-1)
+        if(index > contactService.getShowListSize()-1 || index < 0)
             return new ResponseEntity<Show>(HttpStatus.BAD_REQUEST);
 
         Show currentShow = contactService.getShowByIndex(index);
@@ -56,4 +56,14 @@ public class ContactController {
         return new ResponseEntity<Show>(show, HttpStatus.OK);
     }
     
+    @PutMapping("/show/updateByIndex/{index}")
+    public ResponseEntity<Show> updateShowByIndex(@PathVariable(required = true) int index, @RequestBody Show show) {
+         if(index > contactService.getShowListSize()-1 || index < 0)
+            return new ResponseEntity<Show>(HttpStatus.BAD_REQUEST);
+        
+        show.setId(contactService.getShowIdByIndex(index));
+        contactService.updateShow(index, show);
+        return new ResponseEntity<Show>(show, HttpStatus.OK);
+
+    }
 }
