@@ -29,6 +29,11 @@ public class ContactShowService implements ShowServiceInterface{
     }
 
     @Override
+    public void updateShow(int index, Show show) {
+        contactRepository.updateShow(index, show);
+    }
+
+    @Override
     public int getShowIndexById(String id) {
         for(int i=0; i<getShowListSize(); i++) {
             if(getShowByIndex(i).getId().equals(id))

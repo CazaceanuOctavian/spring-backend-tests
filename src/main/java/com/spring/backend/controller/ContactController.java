@@ -6,6 +6,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -42,6 +43,17 @@ public class ContactController {
     public ResponseEntity<Show> createShow(@RequestBody Show show) {
         contactService.addShow(show);
         return new ResponseEntity<Show>(show, HttpStatus.CREATED);
+    }
+
+    @PutMapping("/show/updateById/{id}")
+    public ResponseEntity<Show> updateShowById(@PathVariable(required = true) String id, @RequestBody Show show) {
+        int currentShowIndex = contactService.getShowIndexById(id);
+        if(currentShowIndex == Constants.NOT_FOUND)
+            return new ResponseEntity<Show>(HttpStatus.BAD_REQUEST);
+        
+        show.setId(id);
+        contactService.updateShow(currentShowIndex, show);
+        return new ResponseEntity<Show>(show, HttpStatus.OK);
     }
     
 }

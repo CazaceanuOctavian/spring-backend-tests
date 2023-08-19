@@ -28,6 +28,10 @@ public class ContactShowRepository {
     public void addShow(Show show) {
         shows.add(show);
     }
+
+    public void updateShow(int index, Show show) {
+        shows.set(index, show);
+    }
  
     
 }

@@ -7,4 +7,5 @@ public interface ShowServiceInterface {
     public int getShowIndexById(String id);
     public int getShowListSize();
     public void addShow(Show show);
+    public void updateShow(int index, Show show);
 }
