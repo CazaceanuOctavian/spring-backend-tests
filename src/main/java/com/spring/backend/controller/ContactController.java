@@ -83,4 +83,13 @@ public class ContactController {
         contactService.removeShow(currentShowIndex);
         return new ResponseEntity<Show>(HttpStatus.OK);
     }
+
+    @DeleteMapping("/show/deleteByIndex/{index}")
+    public ResponseEntity<Show> deleteShowByIndex(@PathVariable(required = true) int index) {
+        if(index > contactService.getShowListSize()-1 || index < 0)
+            return new ResponseEntity<Show>(HttpStatus.BAD_REQUEST);
+
+        contactService.removeShow(index);
+        return new ResponseEntity<Show>(HttpStatus.OK);
+    }
 }
