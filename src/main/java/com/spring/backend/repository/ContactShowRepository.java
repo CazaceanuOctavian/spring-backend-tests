@@ -36,6 +36,10 @@ public class ContactShowRepository {
     public String getShowIdByIndex(int index) {
         return shows.get(index).getId();
     }
+
+    public void removeShow(int index) {
+        shows.remove(index);
+    }
  
     
 }

@@ -1,8 +1,11 @@
 package com.spring.backend.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -39,7 +42,12 @@ public class ContactController {
         return new ResponseEntity<Show>(currentShow, HttpStatus.OK);
     }
 
-    @PostMapping("/show")
+    @GetMapping("/show/getList")
+    public ResponseEntity<List<Show>> getShowList() {
+        return new ResponseEntity<List<Show>>(contactService.getShows(), HttpStatus.OK);
+    }
+
+    @PostMapping("/show/create")
     public ResponseEntity<Show> createShow(@RequestBody Show show) {
         contactService.addShow(show);
         return new ResponseEntity<Show>(show, HttpStatus.CREATED);
@@ -64,6 +72,15 @@ public class ContactController {
         show.setId(contactService.getShowIdByIndex(index));
         contactService.updateShow(index, show);
         return new ResponseEntity<Show>(show, HttpStatus.OK);
+    }
 
+    @DeleteMapping("/show/deleteById/{id}")
+    public ResponseEntity<Show> deleteShowById(@PathVariable(required = true) String id) {
+        int currentShowIndex = contactService.getShowIndexById(id);
+        if(currentShowIndex == Constants.NOT_FOUND)
+            return new ResponseEntity<Show>(HttpStatus.BAD_REQUEST);
+
+        contactService.removeShow(currentShowIndex);
+        return new ResponseEntity<Show>(HttpStatus.OK);
     }
 }
