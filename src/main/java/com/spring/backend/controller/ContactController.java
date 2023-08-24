@@ -59,7 +59,7 @@ public class ContactController {
         if(currentShowIndex == Constants.NOT_FOUND)
             return new ResponseEntity<Show>(HttpStatus.BAD_REQUEST);
         
-        show.setId(id);
+        //show.setId(id);
         contactService.updateShow(currentShowIndex, show);
         return new ResponseEntity<Show>(show, HttpStatus.OK);
     }
@@ -69,7 +69,7 @@ public class ContactController {
          if(index > contactService.getShowListSize()-1 || index < 0)
             return new ResponseEntity<Show>(HttpStatus.BAD_REQUEST);
         
-        show.setId(contactService.getShowIdByIndex(index));
+        //show.setId(contactService.getShowIdByIndex(index));
         contactService.updateShow(index, show);
         return new ResponseEntity<Show>(show, HttpStatus.OK);
     }
