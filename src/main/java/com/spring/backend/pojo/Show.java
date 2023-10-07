@@ -8,7 +8,7 @@ public class Show {
     private String title;
     private String episode;
     private Float rating;
-    private final String id;
+    private String id;
 
     public Show() {
         this.id= UUID.randomUUID().toString();
@@ -18,11 +18,11 @@ public class Show {
         return this.id;
     }
 
-    /* 
+    
     public void setId(String id) {
         this.id = id;
     }
-    */
+    
 
     public String getTitle() {
         return this.title;
